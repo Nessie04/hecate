@@ -24,7 +24,7 @@
 
       <div class="form-group">
         <label>Tu Clave Secreta</label>
-        <input type="password" formControlName="password">
+        <input type="password" formControlName="password" placeholder="...">
         @if (submitted && f['password'].errors?.['required']) {
           <span class="field-error">La contraseña es obligatoria</span>
         }

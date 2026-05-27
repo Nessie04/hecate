@@ -10,19 +10,23 @@
         <li><strong>Email:</strong> lechuza&#64;laguaridadehecate.com</li>
       </ul>
     </div>
+
     <form class="ritual-form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Tu nombre</label>
-        <input type="text" formControlName="nombre">
+        <input type="text" formControlName="nombre" placeholder="...">
       </div>
+
       <div class="form-group">
         <label>Tu email</label>
-        <input type="email" formControlName="email">
+        <input type="email" formControlName="email" placeholder="...">
       </div>
+
       <div class="form-group">
         <label>Mensaje</label>
-        <textarea formControlName="mensaje" rows="5"></textarea>
+        <textarea formControlName="mensaje" rows="5" placeholder="..."></textarea>
       </div>
+
       <button type="submit" class="btn-floral">Enviar Mensaje</button>
     </form>
   </section>

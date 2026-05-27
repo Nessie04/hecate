@@ -11,9 +11,10 @@
     }
 
     <form class="ritual-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
       <div class="form-group">
         <label>Nombre y Apellidos</label>
-        <input type="text" formControlName="fullName" placeholder="Tu nombre terrenal...">
+        <input type="text" formControlName="fullName" placeholder="...">
         @if (submitted && f['fullName'].errors?.['required']) {
           <span class="field-error">El nombre es obligatorio</span>
         }
@@ -24,7 +25,7 @@
 
       <div class="form-group">
         <label>Correo Electrónico</label>
-        <input type="email" formControlName="email" placeholder="lechuza@ejemplo.com">
+        <input type="email" formControlName="email" placeholder="...">
         @if (submitted && f['email'].errors?.['required']) {
           <span class="field-error">El correo es obligatorio</span>
         }
@@ -35,12 +36,12 @@
 
       <div class="form-group">
         <label>Teléfono de Contacto</label>
-        <input type="tel" formControlName="phone" placeholder="Tu número de contacto...">
+        <input type="tel" formControlName="phone" placeholder="...">
       </div>
 
       <div class="form-group">
         <label>Contraseña Secreta</label>
-        <input type="password" formControlName="password">
+        <input type="password" formControlName="password" placeholder="...">
         @if (submitted && f['password'].errors?.['minlength']) {
           <span class="field-error">Mínimo 6 caracteres</span>
         }
@@ -48,7 +49,7 @@
 
       <div class="form-group">
         <label>Confirmar Contraseña</label>
-        <input type="password" formControlName="passwordConfirmed">
+        <input type="password" formControlName="passwordConfirmed" placeholder="...">
         @if (submitted && form.errors?.['mismatch']) {
           <span class="field-error">Las contraseñas no coinciden</span>
         }
@@ -56,11 +57,16 @@
 
       <div class="form-group">
         <label>Retrato de Perfil (URL)</label>
-        <input type="text" formControlName="profilePicture" placeholder="URL de tu imagen...">
+        <input type="text" formControlName="profilePicture" placeholder="...">
       </div>
 
       <button type="submit" class="btn-floral">Firmar el Pacto</button>
-      <p class="auth-footer">¿Ya eres parte de nosotros? <a routerLink="/login">Inicia sesión aquí</a></p>
+
+      <p class="auth-footer">
+        ¿Ya eres parte de nosotros?
+        <a routerLink="/login">Inicia sesión aquí</a>
+      </p>
+
     </form>
   </section>
 </main>

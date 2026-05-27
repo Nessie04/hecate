@@ -5,44 +5,62 @@
       <h3>Mi Refugio</h3>
       <p class="subtitle">Gestión del iniciado</p>
     </div>
+
     <nav class="profile-actions-menu">
       <button class="btn-menu-lateral" [class.active]="activeTab() === 'profile'"
         (click)="activeTab.set('profile'); loadProfile()">
         Datos del Perfil
       </button>
+
       <button class="btn-menu-lateral" [class.active]="activeTab() === 'reservations'"
         (click)="showReservations()">
         Ver Reservas
       </button>
+
       <hr class="menu-divider">
+
       <button class="btn-text-logout" (click)="logout()">Cerrar Sesión</button>
     </nav>
   </aside>
 
   <section class="profile-dynamic-content">
+
     @if (loading()) {
       <p>Invocando al oráculo...</p>
     }
+
     @if (errorMessage()) {
       <p class="error-msg">{{ errorMessage() }}</p>
     }
 
     @if (activeTab() === 'profile' && user() && !loading()) {
       <div class="profile-center-card">
+
         <div class="profile-avatar-frame">
           <img [src]="user()!.profilePicture || 'assets/img/landing.jpg'" alt="Avatar">
         </div>
+
         <h2>{{ user()!.fullName }}</h2>
         <p class="profile-intro">Bienvenido a tu refugio privado en La Guarida.</p>
+
         <div class="profile-fields">
+
           <div class="form-group">
             <label>Correo Electrónico</label>
-            <input class="readonly-input" [value]="user()!.email" readonly>
+            <input class="readonly-input"
+                   [value]="user()!.email"
+                   readonly
+                   placeholder="...">
           </div>
+
           <div class="form-group">
             <label>Teléfono</label>
-            <input class="readonly-input" [value]="user()!.phone || 'No registrado'" readonly>
+            <input class="readonly-input"
+                   [value]="user()!.phone || 'No registrado'"
+                   readonly
+                   placeholder="...">
           </div>
+
         </div>
       </div>
     }
@@ -50,20 +68,24 @@
     @if (activeTab() === 'reservations' && !loading()) {
       <div class="profile-center-box">
         <h3 class="section-title">Tus Rituales</h3>
+
         @if (reservations().length === 0) {
           <p>No tienes ningún ritual programado.</p>
         }
+
         @for (res of reservations(); track res.reservationId) {
           <article class="ritual-card">
             <div class="ritual-date">
               <span class="day">{{ formatDate(res.dateTime).dia }}</span>
               <span class="month">{{ formatDate(res.dateTime).mes }}</span>
             </div>
+
             <div class="ritual-info">
               <h4>{{ res.serviceName.toUpperCase() }}</h4>
               <p>Hora: {{ formatDate(res.dateTime).hora }} hs</p>
               <p>Código: #{{ res.reservationId }}</p>
             </div>
+
             <div class="ritual-status">
               <span class="badge">{{ res.status }}</span>
               <button class="btn-cancel" (click)="cancelReservation(res.reservationId)">
@@ -74,5 +96,6 @@
         }
       </div>
     }
+
   </section>
 </main>

@@ -2,11 +2,12 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "ea838ab5-00de-417e-bced-bea9302a43f0"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "FrontAngular": {
+    "frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,7 +32,8 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "outputPath": "../src/main/resources/static"
           },
           "configurations": {
             "production": {
@@ -59,13 +61,15 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": {"proxyConfig": "proxy.conf.json"},
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "buildTarget": "FrontAngular:build:production"
+              "buildTarget": "frontend:build:production"
             },
             "development": {
-              "buildTarget": "FrontAngular:build:development"
+              "buildTarget": "frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
